@@ -4,45 +4,49 @@
   <img style="margin-left: 10px;"  width="100" height="100" src="https://img.icons8.com/fluency/100/vite.png" alt="vite"/>
 </div>
 
+# Updates
 
-[] Setup File Structure
-[] implement a AI for the Movie Recommendation 
-[] implement a interactive home.page 
-[] provide services like sending email about upcomming movies and shows when the used subscribes the show
-
-
-
+- [ ] Make a Good Video for Linkedin
+- [ ] Make a Real for Instagram
+- [ ] A Blog Video in Youtube.
+- [ ] Contact Me Page
+- [ ] Setup File Structure for front-end and backend
+- [ ] implement a AI for the Movie Recommendation
+- [ ] implement a interactive home.page
+- [ ] provide services like sending email about upcomming movies and shows when the used subscribes the show
 
 # Movie-sovi
- 
-  A Movie Listing Website Written in Vanila Javascript and Vite and OMDb API to Fetch Movies,Series and TV Shows related Data.
-  
+
+A Movie Listing Website Written in Vanila Javascript and Vite and OMDb API to Fetch Movies,Series and TV Shows related Data.
+
 ## Setup Requirements:
-  - npm for vite
-  - browser to view the website.
+
+- npm for vite
+- browser to view the website.
 
 ## Setup Instruction:
-  - clone the Repo :
-    ```bash
-       git clone https://github.com/abhinab-choudhury/Movie-sovi.git
-    ```    
-  - Change Directory :
-    ```bash
-       cd Movie-sovi 
-    ```
-  - Install packages:
-    ```bash
-       npm install
-    ```  
-  - Strat the Project locally:
-    ```bash
-       npm run dev
-    ```  
 
-  ### source
-  Icons and Images used in this projects:
-  
-  <a  href="https://icons8.com/icon/12246/imdb">IMDb</a> icon by <a href="https://icons8.com">Icons8</a> <br>
-  <a  href="https://icons8.com/icon/dJjTWMogzFzg/vite">Vite</a> icon by <a href="https://icons8.com">Icons8</a> <br>
-  <a  href="https://icons8.com/icon/12145/movies">Movies</a> icon by <a href="https://icons8.com">Icons8</a> <br>
+- clone the Repo :
+  ```bash
+     git clone https://github.com/abhinab-choudhury/Movie-sovi.git
+  ```
+- Change Directory :
+  ```bash
+     cd Movie-sovi
+  ```
+- Install packages:
+  ```bash
+     npm install
+  ```
+- Strat the Project locally:
+  ```bash
+     npm run dev
+  ```
 
+### source
+
+Icons and Images used in this projects:
+
+<a  href="https://icons8.com/icon/12246/imdb">IMDb</a> icon by <a href="https://icons8.com">Icons8</a> <br>
+<a  href="https://icons8.com/icon/dJjTWMogzFzg/vite">Vite</a> icon by <a href="https://icons8.com">Icons8</a> <br>
+<a  href="https://icons8.com/icon/12145/movies">Movies</a> icon by <a href="https://icons8.com">Icons8</a> <br>
