@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+.nerko-one-regular {
+  font-family: 'Nerko One', cursive;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.nerko-one-bold {
+  font-family: 'Nerko One', cursive;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.noto-sans-regular {
+  font-family: 'Noto Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
