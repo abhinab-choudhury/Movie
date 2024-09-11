@@ -4,16 +4,6 @@
   <img style="margin-left: 10px;"  width="100" height="100" src="https://img.icons8.com/fluency/100/vite.png" alt="vite"/>
 </div>
 
-# Updates
-
-- [ ] Make a Good Video for Linkedin
-- [ ] Make a Real for Instagram
-- [ ] A Blog Video in Youtube.
-- [ ] Contact Me Page
-- [ ] Setup File Structure for front-end and backend
-- [ ] implement a AI for the Movie Recommendation
-- [ ] implement a interactive home.page
-- [ ] provide services like sending email about upcomming movies and shows when the used subscribes the show
 
 # Movie-sovi
 
