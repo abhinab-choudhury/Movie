@@ -56,10 +56,10 @@ export default function HeroSection() {
       )}
     >
       <div className="flex lg:gap-10 md:gap-5 justify-center m-5 md:my-10">
-        <img src={hero3} alt="image 1" className="rounded-2xl object-fill aspect-[16/9] w-[80%]" />
+        <img src={hero3} alt="image 1" className="rounded-2xl object-fill aspect-[16/9] md:w-[80%]" />
       </div>
       <div className="flex lg:gap-10 md:gap-5 justify-center m-5 md:my-10">
-        <img src={hero4} alt="image 2" className="rounded-2xl object-fill aspect-[16/9] w-[80%]" />
+        <img src={hero4} alt="image 2" className="rounded-2xl object-fill aspect-[16/9] md:w-[80%]" />
       </div>
     </Carousel>
   );
