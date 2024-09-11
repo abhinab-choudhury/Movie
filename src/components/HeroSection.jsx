@@ -1,25 +1,27 @@
-import hero1 from './../assets/hero-1.svg';
-import hero2 from './../assets/hero-2.svg';
+import hero3 from './../assets/hero-3.jpg';
+import hero4 from './../assets/hero-4.jpg';
 import { Carousel, IconButton } from '@material-tailwind/react';
 
 export default function HeroSection() {
   return (
     <Carousel
-      className="rounded-xl mt-14 lg:w-[50%] sm:w-[100%]"
+      className="rounded-xl mt-10 md:mt-0"
       prevArrow={({ handlePrev }) => (
         <IconButton
           variant="text"
           color="white"
           size="lg"
           onClick={handlePrev}
-          className="!absolute top-1/2 left-4 -translate-y-2/4 bg-pink-200 lg:bg-opacity-65 md:bg-opacity-65 hover:bg-pink-300 lg:opacity-100">
+          className="!absolute top-1/2 opacity-0 md:opacity-100 left-12 -translate-y-2/4 bg-blue-200 lg:bg-opacity-65 md:bg-opacity-65 hover:bg-blue-300 lg:opacity-100"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="h-6 w-6">
+            className="h-6 w-6"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -34,14 +36,16 @@ export default function HeroSection() {
           color="white"
           size="lg"
           onClick={handleNext}
-          className="!absolute top-1/2 !right-4 -translate-y-2/4 bg-pink-200 lg:bg-opacity-65 md:bg-opacity-65 hover:bg-pink-300 lg:opacity-100">
+          className="!absolute top-1/2 opacity-0 md:opacity-100 !right-12 -translate-y-2/4 bg-blue-200 lg:bg-opacity-65 md:bg-opacity-65 hover:bg-blue-300 lg:opacity-100"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="h-6 w-6">
+            className="h-6 w-6"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -49,12 +53,13 @@ export default function HeroSection() {
             />
           </svg>
         </IconButton>
-      )}>
-      <div className="flex lg:gap-10 md:gap-5 justify-center">
-        <img src={hero1} alt="image 1" className="object-cover rounded-lg" />
+      )}
+    >
+      <div className="flex lg:gap-10 md:gap-5 justify-center m-5 md:my-10">
+        <img src={hero3} alt="image 1" className="rounded-2xl object-fill aspect-[16/9] w-[80%]" />
       </div>
-      <div>
-        <img src={hero2} alt="image 2" className="object-cover rounded-lg" />
+      <div className="flex lg:gap-10 md:gap-5 justify-center m-5 md:my-10">
+        <img src={hero4} alt="image 2" className="rounded-2xl object-fill aspect-[16/9] w-[80%]" />
       </div>
     </Carousel>
   );
