@@ -1,4 +1,4 @@
-import { Typography } from "@material-tailwind/react";
+import { Typography } from '@material-tailwind/react';
 import logo from './../assets/favicon.png';
 import linkedin_logo from './../assets/linkedin.png';
 import github_logo from './../assets/github.png';
