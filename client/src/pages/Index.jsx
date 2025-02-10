@@ -1,10 +1,11 @@
 import { Button } from '@material-tailwind/react';
-import HeroSection from '../components/HeroSection';
+import ImageCarousel from '../components/Carousel';
 import { StickyNavbar } from '../components/StickyNavbar';
 import hero1 from './../assets/hero-1.svg';
 import React from 'react';
 import { Accordion, AccordionHeader, AccordionBody } from '@material-tailwind/react';
 import { Footer } from '../components/Footer';
+// import SimpleGrow from '../components/MUIGrow';
 
 function Index() {
   const [open, setOpen] = React.useState(1);
@@ -32,37 +33,17 @@ function Index() {
       <section className="my-4 p-3 h-fit max-w-[1920px]">
         <StickyNavbar />
       </section>
-      <section className="h-fit max-w-[1920px]">
-        <HeroSection />
-      </section>
-      <section className="h-fit max-w-[1920px] max-h-[840px] flex flex-col md:flex-row justify-start backdrop-blur-sm p-[8%]">
-        <div className="flex flex-col gap-7 justify-start align-middle md:w-[50%] my-8">
-          <h1 className="text-4xl font-extrabold">About Movie-Sovi</h1>
-          <div className="noto-sans-regular rounded-xl text-balance md:text-lg">
-            Dive into the world of cinema with Movie-Sovi, your go to destination for discovering
-            and sharing movie reviews. Whether you&apos;re looking for honest opinions, hidden gems,
-            or the next blockbuster to watch, Movie-Sovi is here to connect movie lovers from all
-            walks of life.
-          </div>
-          <div className="flex justify-start">
-            <Button
-              fullWidth
-              variant="gradient"
-              size="lg"
-              className="hidden lg:inline-block w-auto"
-            >
-              <span>Sign up to know More</span>
-            </Button>
-          </div>
-        </div>
-        <div className="md:w-[50%] mx-9">
-          <img
-            className="ml-auto rounded-2xl mx-10 my-5 object-cover w-[100%] md:w-[380px]"
-            src={hero1}
-            alt="movie-scene"
-          />
+      <section className="mt-20 flex flex-col md:flex-row align-middle justify-center items-center w-full max-w-[100%] gap-8 px-6 my-20">
+        <ImageCarousel />
+
+        <div className="flex flex-col justify-center items-center text-center md:items-start md:text-left">
+          <h1 className="md:pr-10 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center md:text-left">
+            For movie lovers, by movie critics.
+          </h1>
+          <Button variant="outlined" className='my-4'>Explore</Button>
         </div>
       </section>
+
       <div className="bg-[#e3e9ff]">
         <section className="flex flex-col h-fit max-w-[1200px] p-10 mx-auto">
           <h1 className="text-4xl font-extrabold">FAQs</h1>

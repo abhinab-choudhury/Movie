@@ -14,14 +14,14 @@ export function StickyNavbar() {
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <li>
         <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal">
-          <a href="#" className="flex items-center">
-            Movies
+          <a href="/reviews" className="flex items-center">
+            Reviews
           </a>
         </Typography>
       </li>
       <li>
         <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal">
-          <a href="#" className="flex items-center">
+          <a href="/wishlist" className="flex items-center">
             Wishlist
           </a>
         </Typography>
@@ -39,7 +39,9 @@ export function StickyNavbar() {
             className="mx-2 cursor-pointer py-1.5 font-bold flex justify-content-center gap-3"
           >
             <img src={favicon} alt="fabicon" />
-            <span className="text-2xl">Movie-sovi</span>
+            <span className="text-2xl font-bold tracking-wide text-black">
+              Movie
+            </span>
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>

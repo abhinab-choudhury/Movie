@@ -1,8 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Index from './pages/Index';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
+import Wishlist from './pages/Wishlist';
+import Reviews from './pages/Reviews';
+import Search from './pages/Search';
+import SignInPage from './pages/Signin';
+import SignUpPage from './pages/Signup';
 
 function App() {
   return (
@@ -10,8 +13,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </>

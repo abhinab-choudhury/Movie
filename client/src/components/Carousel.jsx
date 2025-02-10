@@ -2,10 +2,9 @@ import hero3 from './../assets/hero-3.jpg';
 import hero4 from './../assets/hero-4.jpg';
 import { Carousel } from '@material-tailwind/react';
 
-export default function HeroSection() {
+export default function ImageCarousel() {
   return (
     <Carousel
-      className="rounded-xl mt-10 md:mt-0"
       autoplay="true"
       navigation={({ setActiveIndex, activeIndex, length }) => (
         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">

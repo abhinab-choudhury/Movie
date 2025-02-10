@@ -11,7 +11,7 @@ export function Footer() {
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
         <div className="flex gap-4 align-middle">
           <img src={logo} alt="logo-ct" className="w-10" />
-          <h1 className="text-2xl font-extrabold">Movie-Sovi</h1>
+          <h1 className="text-2xl font-extrabold">Movie</h1>
         </div>
         <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
           <li>
@@ -48,7 +48,7 @@ export function Footer() {
       </div>
       <hr className="my-8 border-blue-gray-50" />
       <Typography color="blue-gray" className="text-center font-normal">
-        &copy; {new Date().getFullYear()} Movie-Sovi. All Rights Reserved.
+        &copy; {new Date().getFullYear()} Movie. All Rights Reserved.
       </Typography>
       <div className="grid place-content-center my-10">
         <div className="flex gap-4">
