@@ -1,5 +1,5 @@
-import hero3 from './../assets/hero-3.jpg';
-import hero4 from './../assets/hero-4.jpg';
+import hero1 from './../assets/hero1.jpg';
+import hero2 from './../assets/hero2.jpg';
 import { Carousel } from '@material-tailwind/react';
 
 export default function ImageCarousel() {
@@ -22,14 +22,14 @@ export default function ImageCarousel() {
     >
       <div className="flex lg:gap-10 md:gap-5 justify-center m-5 md:my-10">
         <img
-          src={hero3}
+          src={hero1}
           alt="image 1"
           className="rounded-2xl object-fill aspect-[16/9] lg:w-[90%]"
         />
       </div>
       <div className="flex lg:gap-10 md:gap-5 justify-center m-5 md:my-10">
         <img
-          src={hero4}
+          src={hero2}
           alt="image 2"
           className="rounded-2xl object-fill aspect-[16/9] lg:w-[90%]"
         />

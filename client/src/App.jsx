@@ -6,6 +6,8 @@ import Reviews from './pages/Reviews';
 import Search from './pages/Search';
 import SignInPage from './pages/Signin';
 import SignUpPage from './pages/Signup';
+import Home from './pages/Home';
+import Error404 from './pages/pageNotFound';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/search" element={<Search />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </>

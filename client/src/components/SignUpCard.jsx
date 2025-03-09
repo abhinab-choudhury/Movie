@@ -5,12 +5,12 @@ import MuiCard from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
-import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import { GoogleIcon, GithubIcon } from './CustomIcons';
-import Logo from "./../assets/favicon.png"
+import Logo from './../assets/favicon.png';
+import { Link } from 'react-router-dom';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -22,12 +22,12 @@ const Card = styled(MuiCard)(({ theme }) => ({
   boxShadow:
     'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
   [theme.breakpoints.up('sm')]: {
-    width: '450px',
+    width: '450px'
   },
   ...theme.applyStyles('dark', {
     boxShadow:
-      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
-  }),
+      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px'
+  })
 }));
 
 export default function SignUpCard() {
@@ -44,7 +44,7 @@ export default function SignUpCard() {
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
-      password: data.get('password'),
+      password: data.get('password')
     });
   };
 
@@ -79,11 +79,7 @@ export default function SignUpCard() {
     <Card variant="outlined">
       <Box sx={{ display: { xs: 'flex', gap: '10px' } }}>
         <img src={Logo} alt="Movie-Sovi Logo" />
-        <Typography
-          component="h1"
-          variant="h5"
-          sx={{ width: '100%', fontWeight: "bolder" }}
-        >
+        <Typography component="h1" variant="h5" sx={{ width: '100%', fontWeight: 'bolder' }}>
           Movie
         </Typography>
       </Box>
@@ -142,11 +138,7 @@ export default function SignUpCard() {
         <Typography sx={{ textAlign: 'center' }}>
           Already had an account?{' '}
           <span>
-            <Link
-              href="/signin"
-              variant="body2"
-              sx={{ alignSelf: 'center' }}
-            >
+            <Link to="/signin" className="text-blue-400 text-sm hover:underline">
               Sign in
             </Link>
           </span>
@@ -163,7 +155,7 @@ export default function SignUpCard() {
           Google
         </Button>
         <Button
-          sx={{ borderColor: "black", color: "black" }}
+          sx={{ borderColor: 'black', color: 'black' }}
           fullWidth
           variant="outlined"
           onClick={() => alert('Sign in with Github')}

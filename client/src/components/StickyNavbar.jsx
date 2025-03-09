@@ -1,54 +1,39 @@
-import favicon from './../assets/favicon.png';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Navbar, Collapse, Typography, Button, IconButton } from '@material-tailwind/react';
+import favicon from './../assets/favicon.png';
 
-export function StickyNavbar() {
+export function StickyNavbar({ navList }) {
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
     window.addEventListener('resize', () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
 
-  const navList = (
-    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <li>
-        <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal">
-          <a href="/reviews" className="flex items-center">
-            Reviews
-          </a>
-        </Typography>
-      </li>
-      <li>
-        <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal">
-          <a href="/wishlist" className="flex items-center">
-            Wishlist
-          </a>
-        </Typography>
-      </li>
-    </ul>
-  );
-
   return (
-    <div className="relative -m-3 max-h-[768px] w-[calc(100% - 45px)] scroll-m-0">
-      <Navbar className="fixed top-0 z-50 h-max max-w-full rounded-none px-4 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between text-blue-gray-900">
+    <div className="relative flex flex-col justify-center items-center">
+      <Navbar className="fixed top-0 z-50 h-max max-w-7xl w-full mx-auto px-4 lg:px-6 rounded-none shadow-none">
+        <div className="flex items-center justify-between w-full text-blue-gray-900">
           <Typography
             as="a"
             href="#"
-            className="mx-2 cursor-pointer py-1.5 font-bold flex justify-content-center gap-3"
+            className="mx-2 cursor-pointer py-1.5 font-bold flex items-center gap-3"
           >
-            <img src={favicon} alt="fabicon" />
-            <span className="text-2xl font-bold tracking-wide text-black">
-              Movie
-            </span>
+            <img src={favicon} alt="favicon" className="h-8 w-8" />
+            <span className="text-2xl font-bold tracking-wide text-black">Movie</span>
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
+              <Link to="/signup">
+                <Button fullWidth variant="text" size="sm" className="hidden lg:inline-block">
+                  <span>Sign Up</span>
+                </Button>
+              </Link>
               <Link to="/signin">
                 <Button fullWidth variant="gradient" size="sm" className="hidden lg:inline-block">
-                  <span>sign in</span>
+                  <span>Sign In</span>
                 </Button>
               </Link>
             </div>
@@ -85,10 +70,10 @@ export function StickyNavbar() {
         </div>
         <Collapse open={openNav}>
           {navList}
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-1 mt-5">
             <Link to="/signin">
-              <Button fullWidth variant="gradient" size="sm" className="">
-                <span>sign in</span>
+              <Button fullWidth variant="gradient" size="sm">
+                <span>Sign In</span>
               </Button>
             </Link>
           </div>
@@ -97,3 +82,7 @@ export function StickyNavbar() {
     </div>
   );
 }
+
+StickyNavbar.propTypes = {
+  navList: PropTypes.node
+};

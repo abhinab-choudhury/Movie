@@ -1,65 +1,99 @@
 import { Button } from '@material-tailwind/react';
 import ImageCarousel from '../components/Carousel';
 import { StickyNavbar } from '../components/StickyNavbar';
-import hero1 from './../assets/hero-1.svg';
 import React from 'react';
-import { Accordion, AccordionHeader, AccordionBody } from '@material-tailwind/react';
 import { Footer } from '../components/Footer';
-// import SimpleGrow from '../components/MUIGrow';
+import { Card, CardBody, CardFooter } from '@material-tailwind/react';
+import { MousePointerClick } from 'lucide-react';
+import FeatureCard from '../components/Card';
 
 function Index() {
-  const [open, setOpen] = React.useState(1);
-  const handleOpen = (value) => setOpen(open === value ? 0 : value);
-  const faqs = [
-    {
-      ques: 'How do I submit a review on Movie-Sovi?',
-      ans: 'To submit a review, simply create an account or log in to your existing one.Then, search for the movie you\'d like to review, click on the "Write a Review" button, and share your thoughts! Our AI will check the validity of your review before it goes live to ensure high-quality content for our community.'
-    },
-    {
-      ques: 'How does the AI-Powered review validation work ?',
-      ans: 'Our AI validation system analyzes submitted reviews to detect spam, offensive language, or irrelevant content.This helps us maintain a high standard of quality and authenticity across all reviews.If your review is flagged by our AI, you’ll have the opportunity to edit and resubmit it.'
-    },
-    {
-      ques: 'How does the voting system work ?',
-      ans: 'Each review on Movie-Sovi can be upvoted or downvoted by the community.Upvotes are given to reviews that are helpful, insightful, or well - written, while downvotes are used for reviews that may lack quality or relevance.The most helpful reviews will rise to the top, helping users quickly find the best content.'
-    },
-    {
-      ques: 'How does Movie-Sovi suggest movies based on my preferences ?',
-      ans: 'Movie-Sovi uses your wishlist and your review history to understand your movie preferences.Our recommendation engine then suggests movies that match your tastes, helping you discover new favorites tailored to your interests.'
-    }
-  ];
   return (
-    <div>
-      <section className="my-4 p-3 h-fit max-w-[1920px]">
+    <div className="w-full">
+      <section className="h-fit w-full mx-auto">
         <StickyNavbar />
       </section>
-      <section className="mt-20 flex flex-col md:flex-row align-middle justify-center items-center w-full max-w-[100%] gap-8 px-6 my-20">
-        <ImageCarousel />
 
-        <div className="flex flex-col justify-center items-center text-center md:items-start md:text-left">
-          <h1 className="md:pr-10 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center md:text-left">
+      <section className="mt-24 flex flex-col md:flex-row items-center justify-center w-full max-w-7xl mx-auto px-6 gap-16">
+        <ImageCarousel className="w-full md:w-1/2" />
+
+        <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl max-w-xl">
             For movie lovers, by movie critics.
           </h1>
-          <Button variant="outlined" className='my-4'>Explore</Button>
+          <Button variant="outlined" className="my-6">
+            Explore
+          </Button>
         </div>
       </section>
 
-      <div className="bg-[#e3e9ff]">
-        <section className="flex flex-col h-fit max-w-[1200px] p-10 mx-auto">
-          <h1 className="text-4xl font-extrabold">FAQs</h1>
-          <div className="my-10">
-            {faqs.map((question, idx) => (
-              <Accordion key={idx} open={open === idx}>
-                <AccordionHeader onClick={() => handleOpen(idx)}>{question.ques}</AccordionHeader>
-                <AccordionBody className="text-balance md:text-lg">{question.ans}</AccordionBody>
-              </Accordion>
-            ))}
+      <section className="max-w-7xl mx-auto my-20 p-10 text-center">
+          <h2 className="text-gray-500 uppercase font-semibold">Our Work</h2>
+          <h1 className="text-3xl md:text-4xl font-bold my-2">Some of Our Awesome Projects</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm">
+            If you can&apos;t decide, the answer is no. If two equally difficult paths exist, choose the
+            one more painful in the short term.
+          </p>
+
+          {/* Cards Layout */}
+          <div className="mt-10 flex flex-col md:flex-row gap-6">
+            <FeatureCard
+              category="Productivity"
+              title="Search and Discover!"
+              description="Insight to help you create, connect, and convert. Understand Your Audience's Interests and Intent."
+            />
+            <FeatureCard
+              category="Design"
+              title="Find Music and Play!"
+              description="Discover emerging topics and trends. Understand Your Audience’s Interests and Interactions."
+            />
           </div>
-        </section>
-      </div>
-      <section>
-        <Footer />
+
+          {/* Large Card Below */}
+          <div className="mt-6 flex justify-center">
+            <FeatureCard
+              category="Design"
+              title="Find Music and Play!"
+              description="Insight to help you create, connect, and convert. Understand Your Audience's Interests and Interactions."
+            />
+          </div>
       </section>
+
+      <section className="max-w-7xl mx-auto my-20 p-10">
+        <div className="text-center flex flex-col items-center">
+          <MousePointerClick className="w-16 h-16 p-4 bg-black text-white rounded-lg mb-4" />
+          <h2 className="text-4xl font-bold">How To Handle Components</h2>
+          <p className="text-lg text-gray-500 max-w-2xl mt-2">
+            We&apos;re constantly trying to express ourselves and actualize our dreams. Don&apos;t
+            stop.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto mt-10 gap-8">
+          <div className="flex flex-col md:flex-row gap-4">
+            <Card className="mt-6 w-full md:w-[40%]">
+              <CardBody></CardBody>
+              <CardFooter className="pt-0"></CardFooter>
+            </Card>
+            <Card className="mt-6 w-full md:w-[60%]">
+              <CardBody></CardBody>
+              <CardFooter className="pt-0"></CardFooter>
+            </Card>
+          </div>
+          <div className="flex flex-col-reverse md:flex-row gap-4">
+            <Card className="mt-6 w-full md:w-[60%]">
+              <CardBody></CardBody>
+              <CardFooter className="pt-0"></CardFooter>
+            </Card>
+            <Card className="mt-6 w-full md:w-[40%]">
+              <CardBody></CardBody>
+              <CardFooter className="pt-0"></CardFooter>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

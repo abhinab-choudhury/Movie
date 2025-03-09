@@ -19,8 +19,8 @@ export default function SignInPage() {
             display: 'block',
             position: 'absolute',
             zIndex: -1,
-            inset: 0,
-          },
+            inset: 0
+          }
         }}
       >
         <Stack
@@ -30,7 +30,7 @@ export default function SignInPage() {
             gap: { xs: 4, sm: 8 },
             p: { xs: 2, sm: 4 },
             mx: 'auto',
-            width: { xs: '100%', sm: 'auto' },
+            width: { xs: '100%', sm: 'auto' }
           }}
         >
           <SignInCard sx={{ width: { xs: '100%', sm: '450px' } }} />
