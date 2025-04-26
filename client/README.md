@@ -8,6 +8,15 @@
 
 A Movie Listing Website Written in Vanila Javascript and Vite and OMDb API to Fetch Movies,Series and TV Shows related Data.
 
+
+## Features:
+
+Type in search box
+- `/a` : Search on the basis of Actors
+- `/m` : Search on the basis of Movie (Default Behaviour)
+- `/s` : Search on the basis of Series
+- `/c` : Search on the basis of Movie Character Only
+
 ## Setup Requirements:
 
 - npm for vite
