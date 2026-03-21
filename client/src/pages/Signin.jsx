@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import SignInCard from './../components/SignInCard';
+import { supabase } from './../libs/supabase';
 
 export default function SignInPage() {
   return (

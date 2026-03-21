@@ -1,16 +1,32 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Index from './pages/Index';
-import Wishlist from './pages/Wishlist';
-import Reviews from './pages/Reviews';
-import Search from './pages/Search';
-import SignInPage from './pages/Signin';
-import Error404 from './pages/pageNotFound';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { CircularProgress, Box } from '@mui/material';
+
+const Index = lazy(() => import("./pages/Index"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const Reviews = lazy(() => import("./pages/Reviews"));
+const Search = lazy(() => import("./pages/Search"));
+const SignInPage = lazy(() => import("./pages/Signin"));
+const Error404 = lazy(() => import("./pages/PageNotFound"));
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Suspense
+        fallback={
+          <Box
+            sx={{
+              height: '100vh',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        }
+      >
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/signin" element={<SignInPage />} />
@@ -19,8 +35,8 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-      </BrowserRouter>
-    </>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
