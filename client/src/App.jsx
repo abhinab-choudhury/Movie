@@ -32,7 +32,7 @@ function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/search/:imdb_id" element={<Search />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Suspense>

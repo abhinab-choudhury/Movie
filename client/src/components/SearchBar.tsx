@@ -1,4 +1,4 @@
-import React from "react"
+import {useState} from "react";
 
 interface FilterProps {
     movieName?: string,
@@ -8,7 +8,7 @@ interface FilterProps {
 }
 
 export default function SearchBar() {
-    const [filters, setFilters] = React.useState<FilterProps>({});
+    const [filters, setFilters] = useState<FilterProps>({});
     return(
         <div>
 
