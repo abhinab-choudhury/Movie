@@ -1,4 +1,3 @@
-import React from 'react';
 import { Typography, Button } from '@material-tailwind/react';
 import { FlagIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,8 +10,7 @@ export function Error404() {
         <Typography
           variant="h1"
           color="blue-gray"
-          className="mt-10 !text-3xl !leading-snug md:!text-4xl"
-        >
+          className="mt-10 !text-3xl !leading-snug md:!text-4xl">
           Error 404 <br /> It looks like something went wrong.
         </Typography>
         <Typography className="mt-8 mb-14 text-[18px] font-normal text-gray-500 mx-auto md:max-w-sm">

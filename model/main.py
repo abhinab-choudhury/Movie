@@ -1,5 +1,6 @@
 from difflib import get_close_matches
 
+import uvicorn
 import pandas as pd
 from fastapi import FastAPI
 
@@ -29,3 +30,4 @@ def read_root():
 def read_item(name: str):
     prediction = suggest_movie(name, 10)
     return {"suggest_movie": prediction}
+

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import SignInCard from './../components/SignInCard';
 
@@ -21,8 +20,7 @@ export default function SignInPage() {
             zIndex: -1,
             inset: 0
           }
-        }}
-      >
+        }}>
         <Stack
           direction={{ xs: 'column', md: 'row' }}
           sx={{
@@ -31,8 +29,7 @@ export default function SignInPage() {
             p: { xs: 2, sm: 4 },
             mx: 'auto',
             width: { xs: '100%', sm: 'auto' }
-          }}
-        >
+          }}>
           <SignInCard sx={{ width: { xs: '100%', sm: '450px' } }} />
         </Stack>
       </Stack>
