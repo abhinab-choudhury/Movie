@@ -1,3 +1,4 @@
+/** Site-wide footer with navigation links and social media icons. */
 import { Typography } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
 import logo from './../assets/favicon.png';
@@ -26,8 +27,16 @@ interface LinkSection {
 
 export function Footer() {
   const socialLinks: SocialLink[] = [
-    { href: 'https://www.instagram.com/abhinab_choudhury_/', img: instagram_logo, alt: 'instagram' },
-    { href: 'https://www.linkedin.com/in/abhinab-choudhury-18022822b/', img: linkedin_logo, alt: 'linkedin' },
+    {
+      href: 'https://www.instagram.com/abhinab_choudhury_/',
+      img: instagram_logo,
+      alt: 'instagram'
+    },
+    {
+      href: 'https://www.linkedin.com/in/abhinab-choudhury-18022822b/',
+      img: linkedin_logo,
+      alt: 'linkedin'
+    },
     { href: 'https://github.com/abhinab-choudhury', img: github_logo, alt: 'github' },
     { href: 'https://x.com/abhinabc_', img: xtwitter_logo, alt: 'x/twitter' }
   ];
@@ -60,18 +69,18 @@ export function Footer() {
               <h1 className="text-2xl font-extrabold text-gray-900">Movie</h1>
             </div>
             <p className="text-gray-500 text-sm max-w-sm leading-relaxed">
-              Discover, bookmark, and explore your favorite movies and TV shows. 
-              Get personalized recommendations tailored just for you.
+              Discover, bookmark, and explore your favorite movies and TV shows. Get personalized
+              recommendations tailored just for you.
             </p>
           </div>
 
-          {footerLinks.map(section => (
+          {footerLinks.map((section) => (
             <div key={section.title}>
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
                 {section.title}
               </h3>
               <ul className="space-y-3">
-                {section.links.map(link => {
+                {section.links.map((link) => {
                   const Icon = link.icon;
                   return (
                     <li key={link.label}>
@@ -110,7 +119,7 @@ export function Footer() {
           </Typography>
 
           <div className="flex gap-3">
-            {socialLinks.map(social => (
+            {socialLinks.map((social) => (
               <a
                 key={social.alt}
                 href={social.href}

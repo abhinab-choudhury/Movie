@@ -1,3 +1,4 @@
+/** Auto-playing image carousel for the landing page hero section. */
 import hero1 from './../assets/hero1.jpg';
 import hero2 from './../assets/hero2.jpg';
 import { Carousel } from '@material-tailwind/react';
@@ -6,7 +7,11 @@ export default function ImageCarousel() {
   return (
     <Carousel
       autoplay={true}
-      navigation={({ setActiveIndex, activeIndex, length }: {
+      navigation={({
+        setActiveIndex,
+        activeIndex,
+        length
+      }: {
         setActiveIndex: (i: number) => void;
         activeIndex: number;
         length: number;

@@ -1,3 +1,4 @@
+/** Wishlist page displaying saved movies from localStorage with remove/clear actions. */
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StickyNavbar } from '../components/StickyNavbar';
@@ -5,6 +6,7 @@ import { Footer } from '../components/Footer';
 import { Heart, Star, Trash2, Bookmark, ArrowLeft } from 'lucide-react';
 import type { WishlistItem } from '../libs/tmdb';
 
+/** Retrieve wishlist items from localStorage. */
 function getWishlist(): WishlistItem[] {
   try {
     return JSON.parse(localStorage.getItem('movie_wishlist') || '[]');
@@ -21,11 +23,14 @@ export default function Wishlist() {
     setItems(getWishlist());
   }, []);
 
-  const removeItem = useCallback((id: number) => {
-    const updated = items.filter(item => item.id !== id);
-    setItems(updated);
-    localStorage.setItem('movie_wishlist', JSON.stringify(updated));
-  }, [items]);
+  const removeItem = useCallback(
+    (id: number) => {
+      const updated = items.filter((item) => item.id !== id);
+      setItems(updated);
+      localStorage.setItem('movie_wishlist', JSON.stringify(updated));
+    },
+    [items]
+  );
 
   const clearAll = () => {
     setItems([]);
@@ -80,13 +85,17 @@ export default function Wishlist() {
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {items.map(item => (
+              {items.map((item) => (
                 <div
                   key={item.id}
                   className="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white"
                 >
                   <div
-                    onClick={() => navigate(item.media_type === 'tv' ? `/movie/${item.id}?type=tv` : `/movie/${item.id}`)}
+                    onClick={() =>
+                      navigate(
+                        item.media_type === 'tv' ? `/movie/${item.id}?type=tv` : `/movie/${item.id}`
+                      )
+                    }
                     className="cursor-pointer"
                   >
                     <div className="relative aspect-[2/3] bg-gray-200">
@@ -116,7 +125,10 @@ export default function Wishlist() {
                   </div>
 
                   <button
-                    onClick={(e: React.MouseEvent) => { e.stopPropagation(); removeItem(item.id); }}
+                    onClick={(e: React.MouseEvent) => {
+                      e.stopPropagation();
+                      removeItem(item.id);
+                    }}
                     className="absolute top-2 left-2 z-10 p-1.5 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
                     title="Remove from wishlist"
                   >

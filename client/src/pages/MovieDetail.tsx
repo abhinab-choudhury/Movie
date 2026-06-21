@@ -1,12 +1,19 @@
+/** Movie/TV detail page with metadata, cast, trailer link, and wishlist toggle. */
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { getMovie, getTV, type MovieDetail as MovieDetailType, type WishlistItem } from '../libs/tmdb';
+import {
+  getMovie,
+  getTV,
+  type MovieDetail as MovieDetailType,
+  type WishlistItem
+} from '../libs/tmdb';
 import { StickyNavbar } from '../components/StickyNavbar';
 import { Footer } from '../components/Footer';
 import Recommendations from '../components/Recommendations';
 import { ArrowLeft, Star, Clock, Heart, Play } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+/** Retrieve wishlist items from localStorage. */
 function getWishlist(): WishlistItem[] {
   try {
     return JSON.parse(localStorage.getItem('movie_wishlist') || '[]');
@@ -31,13 +38,13 @@ export default function MovieDetail() {
 
   useEffect(() => {
     const wishlist = getWishlist();
-    setInWishlist(wishlist.some(item => item.id === Number(id)));
+    setInWishlist(wishlist.some((item) => item.id === Number(id)));
   }, [id]);
 
   const toggleWishlist = () => {
     const wishlist = getWishlist();
     if (inWishlist) {
-      const updated = wishlist.filter(item => item.id !== Number(id));
+      const updated = wishlist.filter((item) => item.id !== Number(id));
       localStorage.setItem('movie_wishlist', JSON.stringify(updated));
       setInWishlist(false);
     } else if (data) {
@@ -80,7 +87,9 @@ export default function MovieDetail() {
         <StickyNavbar />
         <div className="pt-24 text-center">
           <p className="text-gray-500">Failed to load movie details.</p>
-          <button onClick={() => navigate('/')} className="text-blue-600 mt-4 underline">Go Home</button>
+          <button onClick={() => navigate('/')} className="text-blue-600 mt-4 underline">
+            Go Home
+          </button>
         </div>
       </div>
     );
@@ -88,16 +97,12 @@ export default function MovieDetail() {
 
   const title = data.title || data.name || '';
   const year = (data.release_date || data.first_air_date || '').split('-')[0];
-  const runtime = data.runtime
-    ? `${Math.floor(data.runtime / 60)}h ${data.runtime % 60}m`
-    : null;
+  const runtime = data.runtime ? `${Math.floor(data.runtime / 60)}h ${data.runtime % 60}m` : null;
   const backdrop = data.backdrop_path
     ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
     : null;
-  const poster = data.poster_path
-    ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
-    : null;
-  const trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
+  const poster = data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : null;
+  const trailer = data.videos?.results?.find((v) => v.type === 'Trailer' && v.site === 'YouTube');
 
   return (
     <div className="min-h-screen bg-white">
@@ -125,7 +130,9 @@ export default function MovieDetail() {
               {poster ? (
                 <img src={poster} alt={title} className="w-full h-full object-cover" />
               ) : (
-                <div className="flex items-center justify-center h-full text-gray-400">No Poster</div>
+                <div className="flex items-center justify-center h-full text-gray-400">
+                  No Poster
+                </div>
               )}
             </div>
           </div>
@@ -146,8 +153,11 @@ export default function MovieDetail() {
               </span>
               {data.genres && (
                 <span className="flex flex-wrap gap-2">
-                  {data.genres.map(g => (
-                    <span key={g.id} className="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium">
+                  {data.genres.map((g) => (
+                    <span
+                      key={g.id}
+                      className="px-3 py-1 bg-gray-100 rounded-full text-xs font-medium"
+                    >
                       {g.name}
                     </span>
                   ))}
@@ -190,7 +200,7 @@ export default function MovieDetail() {
               <div className="mt-8">
                 <h2 className="text-lg font-bold text-gray-900 mb-3">Cast</h2>
                 <div className="flex gap-4 overflow-x-auto pb-2">
-                  {data.credits.cast.slice(0, 8).map(person => (
+                  {data.credits.cast.slice(0, 8).map((person) => (
                     <div key={person.id} className="flex-shrink-0 text-center w-20">
                       <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 mx-auto mb-1">
                         {person.profile_path ? (
@@ -200,7 +210,9 @@ export default function MovieDetail() {
                             className="w-full h-full object-cover"
                           />
                         ) : (
-                          <div className="flex items-center justify-center h-full text-gray-400 text-xs">N/A</div>
+                          <div className="flex items-center justify-center h-full text-gray-400 text-xs">
+                            N/A
+                          </div>
                         )}
                       </div>
                       <p className="text-xs font-medium truncate">{person.name}</p>

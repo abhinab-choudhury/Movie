@@ -1,3 +1,4 @@
+/** Sticky navigation bar with scroll-aware styling and mobile menu. */
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Navbar, Typography } from '@material-tailwind/react';
@@ -50,7 +51,7 @@ export function StickyNavbar({ navList }: StickyNavbarProps) {
 
           <nav className="flex items-center space-x-4">
             <div className="hidden lg:flex items-center space-x-1">
-              {navLinks.map(link => {
+              {navLinks.map((link) => {
                 const Icon = link.icon;
                 const isActive = location.pathname === link.to;
                 return (
@@ -71,8 +72,6 @@ export function StickyNavbar({ navList }: StickyNavbarProps) {
               {navList}
             </div>
 
-
-
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -91,7 +90,7 @@ export function StickyNavbar({ navList }: StickyNavbarProps) {
           }`}
         >
           <div className="space-y-1">
-            {navLinks.map(link => {
+            {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.to;
               return (
@@ -110,7 +109,6 @@ export function StickyNavbar({ navList }: StickyNavbarProps) {
                 </Link>
               );
             })}
-
           </div>
         </div>
       </Navbar>

@@ -1,13 +1,16 @@
+/** Landing page with hero carousel, feature cards, and call-to-action. */
 import ImageCarousel from '../components/Carousel';
 import { StickyNavbar } from '../components/StickyNavbar';
 import { Footer } from '../components/Footer';
 import FeatureCard from '../components/Card';
-import SearchBtn from '../components/SearchBtn';
 import { useNavigate } from 'react-router-dom';
-import { Search, Bookmark, TrendingUp } from 'lucide-react';
+import { Search, Bookmark, TrendingUp, CommandIcon } from 'lucide-react';
+import { Button } from '@material-tailwind/react';
+import { useSearch } from '../contexts/SearchContext';
 
 function Index() {
   const navigate = useNavigate();
+  const { setOpen } = useSearch();
 
   return (
     <div className="w-full bg-white text-gray-800">
@@ -23,7 +26,17 @@ function Index() {
               Seamlessly search through thousands of movies, create personal watchlists, and get
               personalized recommendations.
             </p>
-            <SearchBtn />
+            <Button
+              onClick={() => setOpen(true)}
+              className="flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow"
+            >
+              <Search className="w-5 h-5" />
+              <span>Start Searching</span>
+              <div className="ml-auto flex items-center gap-1 text-blue-200">
+                <CommandIcon className="w-4 h-4" />
+                <span className="text-sm">K</span>
+              </div>
+            </Button>
           </div>
           <div className="w-full md:w-1/2 flex-shrink-0">
             <ImageCarousel />
@@ -31,8 +44,12 @@ function Index() {
         </section>
 
         <section className="max-w-7xl mx-auto my-24 px-6 text-center">
-          <p className="text-gray-500 uppercase font-semibold tracking-wide text-sm">Our Features</p>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-gray-900">Powerful Movie Discovery Tools</h2>
+          <p className="text-gray-500 uppercase font-semibold tracking-wide text-sm">
+            Our Features
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-gray-900">
+            Powerful Movie Discovery Tools
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm mb-12">
             Explore movies like never before with advanced search, personalized recommendations, and
             smart bookmarking.

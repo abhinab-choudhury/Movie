@@ -1,3 +1,4 @@
+/** Reusable feature card component for the landing page. */
 import type { ReactNode } from 'react';
 import { Button, Card, CardBody } from '@material-tailwind/react';
 import { ChevronRight } from 'lucide-react';

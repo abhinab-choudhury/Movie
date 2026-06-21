@@ -1,9 +1,11 @@
+/** Displays movie recommendations and similar titles with localStorage caching. */
 import { useQuery } from '@tanstack/react-query';
 import { getRecommendations, getSimilar, type TMDBItem } from '../libs/tmdb';
 import { Heart, Star, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+/** Shape of locally cached recommendation data. */
 interface CachedData {
   results: TMDBItem[];
 }
@@ -19,7 +21,9 @@ function getCached<T>(key: string): T | null {
 function setCache<T>(key: string, data: T): void {
   try {
     localStorage.setItem(key, JSON.stringify(data));
-  } catch { /* noop */ }
+  } catch {
+    /* noop */
+  }
 }
 
 const CACHE_PREFIX = 'rec_cache_';
@@ -29,7 +33,10 @@ interface RecommendationsProps {
   title?: string;
 }
 
-export default function Recommendations({ movieId, title = 'You Might Also Like' }: RecommendationsProps) {
+export default function Recommendations({
+  movieId,
+  title = 'You Might Also Like'
+}: RecommendationsProps) {
   const navigate = useNavigate();
   const cacheKey = `${CACHE_PREFIX}${movieId}`;
   const cached = getCached<CachedData>(cacheKey);
@@ -38,21 +45,28 @@ export default function Recommendations({ movieId, title = 'You Might Also Like'
   const { data } = useQuery({
     queryKey: ['recommendations', movieId],
     queryFn: async () => {
-      const [recs, sim] = await Promise.all([
-        getRecommendations(movieId),
-        getSimilar(movieId)
-      ]);
+      const [recs, sim] = await Promise.all([getRecommendations(movieId), getSimilar(movieId)]);
       return { recs, sim };
     },
     enabled: !!movieId,
     staleTime: 1000 * 60 * 60,
-    placeholderData: cached ? { recs: { results: cached.results, page: 1, total_pages: 1, total_results: cached.results.length }, sim: { results: [], page: 1, total_pages: 1, total_results: 0 } } : undefined
+    placeholderData: cached
+      ? {
+          recs: {
+            results: cached.results,
+            page: 1,
+            total_pages: 1,
+            total_results: cached.results.length
+          },
+          sim: { results: [], page: 1, total_pages: 1, total_results: 0 }
+        }
+      : undefined
   });
 
   useEffect(() => {
     if (data) {
       const all = [...(data.recs?.results || []), ...(data.sim?.results || [])];
-      const unique = Array.from(new Map(all.map(m => [m.id, m])).values()).slice(0, 12);
+      const unique = Array.from(new Map(all.map((m) => [m.id, m])).values()).slice(0, 12);
       setItems(unique);
       setCache<CachedData>(cacheKey, { results: unique });
       const history = getCached<number[]>('rec_history') || [];
@@ -90,7 +104,9 @@ export default function Recommendations({ movieId, title = 'You Might Also Like'
         {items.map((item) => (
           <div
             key={item.id}
-            onClick={() => navigate(item.media_type === 'tv' ? `/movie/${item.id}?type=tv` : `/movie/${item.id}`)}
+            onClick={() =>
+              navigate(item.media_type === 'tv' ? `/movie/${item.id}?type=tv` : `/movie/${item.id}`)
+            }
             className="group cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white"
           >
             <div className="relative aspect-[2/3] bg-gray-200">

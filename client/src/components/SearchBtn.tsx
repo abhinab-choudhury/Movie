@@ -1,3 +1,4 @@
+/** Quick-search dialog triggered by button or Cmd/Ctrl+K shortcut. */
 import { CommandIcon, Search, Star } from 'lucide-react';
 import {
   Button,
@@ -12,9 +13,10 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { searchMulti, type TMDBItem } from '../libs/tmdb';
 import { useNavigate } from 'react-router-dom';
+import { useSearch } from '../contexts/SearchContext';
 
-export default function SearchBtn() {
-  const [open, setOpen] = useState(false);
+export default function SearchBtn({ hideButton = false }: { hideButton?: boolean }) {
+  const { open, setOpen } = useSearch();
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const navigate = useNavigate();
@@ -34,15 +36,19 @@ export default function SearchBtn() {
     }
   }, [open]);
 
+  /** Debounce search input by 400ms before firing the API call. */
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(searchQuery), 400);
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
+  /** Global keyboard listener for Cmd/Ctrl+K and Escape. */
   const searchFunction = useCallback((event: KeyboardEvent) => {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
       event.preventDefault();
-      handleOpen();
+      setOpen(true);
+      setSearchQuery('');
+      setDebouncedQuery('');
     }
     if (event.key === 'Escape') {
       setOpen(false);
@@ -63,28 +69,30 @@ export default function SearchBtn() {
     staleTime: 1000 * 60 * 5
   });
 
-  const results: TMDBItem[] = data?.results?.filter(
-    (item: TMDBItem) => item.media_type !== 'person'
-  ) || [];
+  const results: TMDBItem[] =
+    data?.results?.filter((item: TMDBItem) => item.media_type !== 'person') || [];
 
   const handleSelect = (item: TMDBItem) => {
     setOpen(false);
-    const path = item.media_type === 'tv'
-      ? `/movie/${item.id}?type=tv`
-      : `/movie/${item.id}`;
+    const path = item.media_type === 'tv' ? `/movie/${item.id}?type=tv` : `/movie/${item.id}`;
     navigate(path);
   };
 
   return (
     <div>
-      <Button onClick={handleOpen} className="flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow">
-        <Search className="w-5 h-5" />
-        <span>Start Searching</span>
-        <div className="ml-auto flex items-center gap-1 text-blue-200">
-          <CommandIcon className="w-4 h-4" />
-          <span className="text-sm">K</span>
-        </div>
-      </Button>
+      {!hideButton && (
+        <Button
+          onClick={handleOpen}
+          className="flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow"
+        >
+          <Search className="w-5 h-5" />
+          <span>Start Searching</span>
+          <div className="ml-auto flex items-center gap-1 text-blue-200">
+            <CommandIcon className="w-4 h-4" />
+            <span className="text-sm">K</span>
+          </div>
+        </Button>
+      )}
       <Dialog open={open} handler={handleOpen} size="lg">
         <DialogHeader className="pb-0">
           <div className="w-full">
@@ -94,7 +102,9 @@ export default function SearchBtn() {
                 ref={inputRef}
                 type="text"
                 value={searchQuery}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setSearchQuery(e.target.value)
+                }
                 placeholder="Search movies and TV shows..."
                 className="w-full text-lg outline-none bg-transparent placeholder:text-gray-400"
               />
@@ -112,9 +122,7 @@ export default function SearchBtn() {
           )}
 
           {searchQuery && searchQuery.length < 2 && (
-            <p className="text-center text-gray-400 py-8">
-              Type at least 2 characters to search
-            </p>
+            <p className="text-center text-gray-400 py-8">Type at least 2 characters to search</p>
           )}
 
           {isLoading && (
@@ -158,7 +166,9 @@ export default function SearchBtn() {
                     </Typography>
                     <div className="flex items-center gap-2 mt-0.5">
                       <span className="text-xs text-gray-500">
-                        {item.release_date?.split('-')[0] || item.first_air_date?.split('-')[0] || '—'}
+                        {item.release_date?.split('-')[0] ||
+                          item.first_air_date?.split('-')[0] ||
+                          '—'}
                       </span>
                       <span className="flex items-center gap-0.5 text-xs text-gray-500">
                         <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
@@ -173,7 +183,10 @@ export default function SearchBtn() {
               ))}
               <div className="pt-2 text-center">
                 <button
-                  onClick={() => { setOpen(false); navigate(`/search?q=${encodeURIComponent(searchQuery)}`); }}
+                  onClick={() => {
+                    setOpen(false);
+                    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+                  }}
                   className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   View all results &rarr;
@@ -183,7 +196,9 @@ export default function SearchBtn() {
           )}
 
           {!isLoading && searchQuery.length >= 2 && results.length === 0 && (
-            <p className="text-center text-gray-400 py-8">No results found for &ldquo;{searchQuery}&rdquo;</p>
+            <p className="text-center text-gray-400 py-8">
+              No results found for &ldquo;{searchQuery}&rdquo;
+            </p>
           )}
         </DialogBody>
       </Dialog>
