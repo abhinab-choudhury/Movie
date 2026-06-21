@@ -1,4 +1,3 @@
-import * as React from 'react';
 import SvgIcon from '@mui/material/SvgIcon';
 
 export function GithubIcon() {
@@ -49,6 +48,25 @@ export function GoogleIcon() {
           d="M8 3.18545C9.17818 3.18545 10.2255 3.59273 11.0618 4.37818L13.3527 2.08727C11.9636 0.792727 10.16 0 8 0C4.87273 0 2.17455 1.79636 0.858182 4.41455L3.52 6.48C4.15273 4.58909 5.92 3.18545 8 3.18545Z"
           fill="#EA4335"
         />
+      </svg>
+    </SvgIcon>
+  );
+}
+
+export function SitemarkIcon() {
+  return (
+    <SvgIcon sx={{ width: 40, height: 40 }}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+      >
+        <circle cx="20" cy="20" r="20" fill="#1976D2" />
+        <text x="20" y="26" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold">
+          M
+        </text>
       </svg>
     </SvgIcon>
   );

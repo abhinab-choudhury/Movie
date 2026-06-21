@@ -1,5 +1,5 @@
 import { Typography } from '@material-tailwind/react';
-import { StickyNavbar } from './../components/StickyNavbar';
+import { StickyNavbar } from '../components/StickyNavbar';
 
 function NavLinks() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <section className="p-3 h-fit max-w-[1920px]">
-        <StickyNavbar navList={NavLinks} />
+        <StickyNavbar navList={<NavLinks />} />
       </section>
     </div>
   );

@@ -5,8 +5,12 @@ import { Carousel } from '@material-tailwind/react';
 export default function ImageCarousel() {
   return (
     <Carousel
-      autoplay="true"
-      navigation={({ setActiveIndex, activeIndex, length }) => (
+      autoplay={true}
+      navigation={({ setActiveIndex, activeIndex, length }: {
+        setActiveIndex: (i: number) => void;
+        activeIndex: number;
+        length: number;
+      }) => (
         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
           {new Array(length).fill('').map((_, i) => (
             <span

@@ -1,14 +1,20 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import type { ReactNode } from 'react';
 import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
 import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import { SitemarkIcon } from './CustomIcons';
 
-const items = [
+interface ContentItem {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+const items: ContentItem[] = [
   {
     icon: <SettingsSuggestRoundedIcon sx={{ color: 'text.secondary' }} />,
     title: 'Adaptable performance',

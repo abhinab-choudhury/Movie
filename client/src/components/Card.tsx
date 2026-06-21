@@ -1,7 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import type { ReactNode } from 'react';
 import { Button, Card, CardBody } from '@material-tailwind/react';
 import { ChevronRight } from 'lucide-react';
+
+interface FeatureCardProps {
+  category: string;
+  title: string;
+  description: string;
+  icon?: ReactNode;
+  buttonText?: string;
+  onButtonClick?: () => void;
+}
 
 const FeatureCard = ({
   category,
@@ -10,7 +18,7 @@ const FeatureCard = ({
   icon,
   buttonText = 'Learn More',
   onButtonClick
-}) => {
+}: FeatureCardProps) => {
   return (
     <Card
       className="p-6 rounded-xl border-2 border-gray-100 shadow-sm hover:shadow-lg 
@@ -40,21 +48,6 @@ const FeatureCard = ({
       </CardBody>
     </Card>
   );
-};
-
-FeatureCard.propTypes = {
-  category: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  icon: PropTypes.node,
-  buttonText: PropTypes.string,
-  onButtonClick: PropTypes.func
-};
-
-FeatureCard.defaultProps = {
-  icon: null,
-  buttonText: 'Learn More',
-  onButtonClick: () => {}
 };
 
 export default FeatureCard;
